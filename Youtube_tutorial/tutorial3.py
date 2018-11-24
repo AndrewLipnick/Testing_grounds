@@ -74,6 +74,7 @@ player_choice = itertools.cycle([1,2])
 play = True
 players = [1,2]
 while play:
+    print("You two will be playing tic-tac-toe. First person to occupy an entire column, row, or diagonal wins!")
     game_size = int(input("What size game would you like to play (integer): "))
     rows = []    
     game = []
