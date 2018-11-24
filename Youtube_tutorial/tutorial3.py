@@ -73,9 +73,9 @@ def game_board(game_map, player=0, row=0, column=0, just_display = False):
 player_choice = itertools.cycle([1,2])
 play = True
 players = [1,2]
+print("You are going to play a game of tic-tac-toe. You will need two people to play")
+print("The game board will be square and the winner is the first person to get an entire row, column, or diagonal.")
 while play:
-    print("You are going to play a game of tic-tac-toe. You will need two people to play")
-    print("The game board will be square and the winner is the first person to get an entire row, column, or diagonal.")
     game_size = int(input("What size game would you like to play (integer): "))
     rows = []    
     game = []
