@@ -48,7 +48,15 @@ def game_board(game_map, player=0, row=0, column=0, just_display = False):
         if game_map[row][column] != 0:
             print("This position has already been taken! Choose another.")
             return game_map, False
-        print("   0  1  2")
+            
+        row_label = "    "
+        row_number = 0
+        for number in game_map:
+            row_label += (str(row_number) + "  ")
+            row_number += 1
+
+        print(row_label)
+
         if not just_display:
             game_map[row][column] = player
         for count, row in enumerate(game_map):
@@ -66,9 +74,22 @@ player_choice = itertools.cycle([1,2])
 play = True
 players = [1,2]
 while play:
-    game = [[0,0,0],
-            [0,0,0],
-            [0,0,0]]
+    print("You are going to play a game of tic-tac-toe. You will need two people to play")
+    print("The game board will be square and the winner is the first person to get an entire row, column, or diagonal.")
+    game_size = int(input("What size game would you like to play (integer): "))
+    rows = []    
+    game = []
+    options = "("
+    for column in range(game_size):
+        rows.append(0)
+        options += (str(column) + ",")
+    
+    options = options[:-1]
+    options += "):"
+
+    for row in range(game_size):
+        game.append(rows[:])
+
     game_won = False
     game, _ = game_board(game, just_display=True)
     while not game_won:
@@ -77,8 +98,8 @@ while play:
         played = False
 
         while not played:   
-            column_choice = int(input("What column do you want to play? (0,1,2): "))
-            row_choice = int(input("What row do you want to play? (0,1,2): "))
+            column_choice = int(input("What column do you want to play? " +  options))
+            row_choice = int(input("What row do you want to play?" +  options))
             game, played = game_board(game, current_player, row_choice, column_choice)
 
         if win(game):
