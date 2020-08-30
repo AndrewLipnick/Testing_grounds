@@ -1,20 +1,16 @@
 import itertools 
 
 def win(current_game):
-
     def all_same(l):
         if l.count(l[0]) == len(l) and l[0] != 0:
             return True
         else:
             return False
-
-    
     #horizontal
     for row in game:
         if all_same(row):
             print(f"Player {row[0]} is the winner horizontally!")
             return True
-
     #diag
     diags = []
     for col, row in enumerate(reversed(range(len(game)))):
@@ -22,18 +18,15 @@ def win(current_game):
     if all_same(diags):
         print(f"Player {diags[0]} is the winner diagonally (/)!")
         return True
-
     diags = []
     for ix in range(len(game)):
         diags.append(game[ix][ix])
     if all_same(diags):
         print(f"Player {diags[0]} is the winner diagonally (\\)!")
         return True
-
     #vert
     for col in range(len(game)):
         check = []
-
         for row in game:
             check.append(row[col])
 
@@ -41,7 +34,6 @@ def win(current_game):
             print(f"Player {row[0]} is the winner vertically!")
             return True
     return False
-
 
 def game_board(game_map, player=0, row=0, column=0, just_display = False):
     try:
@@ -66,9 +58,6 @@ def game_board(game_map, player=0, row=0, column=0, just_display = False):
     except IndexError as e:
         print("Error: make sure you input row/column as 0,1, or 2")
         return game_map,False
-
-    
-
 
 player_choice = itertools.cycle([1,2])
 play = True
